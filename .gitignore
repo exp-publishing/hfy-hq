@@ -1,5 +1,8 @@
 *.class
 
+# Generated CSS files
+src/main/webapp/resources/css/*.css
+
 # IntelliJ IDEA
 .idea
 *.iml

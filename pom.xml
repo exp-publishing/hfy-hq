@@ -11,6 +11,7 @@
     <properties>
         <springframework.version>4.3.2.RELEASE</springframework.version>
         <thymeleaf.version>3.0.1.RELEASE</thymeleaf.version>
+        <less.version>1.7.0.1.1</less.version>
         <javax.servlet-api.version>2.5</javax.servlet-api.version>
         <javax.jstl.version>1.2</javax.jstl.version>
     </properties>
@@ -44,6 +45,12 @@
         </dependency>
 
         <dependency>
+            <groupId>org.lesscss</groupId>
+            <artifactId>lesscss</artifactId>
+            <version>${less.version}</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
             <version>20090211</version>
@@ -72,6 +79,26 @@
                     <source>1.8</source>
                     <target>1.8</target>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.lesscss</groupId>
+                <artifactId>lesscss-maven-plugin</artifactId>
+                <version>${less.version}</version>
+                <configuration>
+                    <sourceDirectory>${project.basedir}/src/main/webapp/resources/less</sourceDirectory>
+                    <outputDirectory>${project.basedir}/src/main/webapp/resources/css</outputDirectory>
+                    <compress>true</compress>
+                    <includes>
+                        <include>core.less</include>
+                    </includes>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
